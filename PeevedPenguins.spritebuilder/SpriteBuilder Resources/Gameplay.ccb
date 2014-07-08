@@ -709,7 +709,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>contentnode</string>
+				<string>contentNode</string>
 				<key>memberVarAssignmentName</key>
 				<string>_contentNode</string>
 				<key>memberVarAssignmentType</key>
