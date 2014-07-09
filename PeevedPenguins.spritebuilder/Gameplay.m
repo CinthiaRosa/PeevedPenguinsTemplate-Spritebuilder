@@ -19,7 +19,7 @@
     CCPhysicsJoint *_mouseJoint;
     CCNode *_currentPenguin;
     CCPhysicsJoint *_penguinCatapultJoint;
-    CCSprite *_WaitingPenguin
+    CCSprite *_WaitingPenguin;
 }
 
 // is called when CCB file has completed loading
@@ -170,10 +170,6 @@
         } key:nodeA];
     }
 }
-- (void)retry {
-    // reload this level
-    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
-}
 
 - (void)startBlinkAndJump
 {
@@ -181,6 +177,11 @@
     CCAnimationManager* animationManager = self.animationManager;
     // timelines can be referenced and run by name
     [animationManager runAnimationsForSequenceNamed:@"BlinkAndJump"];
+}
+
+- (void)retry {
+    // reload this level
+    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
 }
 
 @end
