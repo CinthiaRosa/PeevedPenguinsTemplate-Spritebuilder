@@ -22,6 +22,7 @@
 
 // is called when CCB file has completed loading
 - (void)didLoadFromCCB {
+    
     // tell this scene to accept touches
     self.userInteractionEnabled = TRUE;
     CCScene *level = [CCBReader loadAsScene:@"Levels/Level1"];
@@ -33,6 +34,9 @@
     // nothing shall collide with our invisible nodes
     _pullbackNode.physicsBody.collisionMask = @[];
     _mouseJointNode.physicsBody.collisionMask = @[];
+    
+    // for the seals desapear when touched by anything
+    _physicsNode.collisionDelegate = self;
 }
 
 
@@ -127,6 +131,11 @@
     self.position = ccp(0, 0);
     CCActionFollow *follow = [CCActionFollow actionWithTarget:penguin worldBoundary:self.boundingBox];
     [_contentNode runAction:follow];
+}
+
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair seal:(CCNode *)nodeA wildcard:(CCNode *)nodeB
+{
+    CCLOG(@"Something collided with a seal!");
 }
 
 - (void)retry {
