@@ -186,19 +186,19 @@ static const float MIN_SPEED = 5.f;
 - (void)update:(CCTime)delta
 {
     if (_currentPenguin.launched) {
-    {
-            // if speed is below minimum speed, assume this attempt is over
-            if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED){
-                [self nextAttempt];
-                return;
-}
+
+    // if speed is below minimum speed, assume this attempt is over
+    if (ccpLength(_currentPenguin.physicsBody.velocity) < MIN_SPEED){
+        [self nextAttempt];
+        return;
+    }
     
     int xMin = _currentPenguin.boundingBox.origin.x;
     
     if (xMin < self.boundingBox.origin.x) {
         [self nextAttempt];
         return;
-    }
+        }
     
     int xMax = xMin + _currentPenguin.boundingBox.size.width;
     
@@ -206,7 +206,8 @@ static const float MIN_SPEED = 5.f;
         [self nextAttempt];
         return;
         }
-     }
+    }
+    
 }
 
 - (void)retry {
